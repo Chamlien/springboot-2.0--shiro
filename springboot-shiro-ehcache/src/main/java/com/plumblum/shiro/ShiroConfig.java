@@ -72,6 +72,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         //拦截器.
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/sys/login", "anon");
@@ -141,7 +142,7 @@ public class ShiroConfig {
         return securityManager;
     }
 
-    /*启动shiro在ioc容器中的注解，只有在使用
+    /**启动shiro在ioc容器中的注解，只有在使用
     * 开启 Shiro 的注解功能 (如 @RequiresRoles,@RequiresPermissions),需借助 SpringAOP 扫描使 用 Shiro 注 解 的 类 , 并 在 必 要 时 进 行 安 全 逻 辑 验 证 , 需 要 配 置 两 个 bean(DefaultAdvisorAutoProxyCreator(可选 ) 和 AuthorizationAttributeSourceAdvisor) 实现此功 能。
     Spring Boot系列 安全框架Apache Shiro基本功能*/
     @Bean
@@ -180,9 +181,6 @@ public class ShiroConfig {
         mappings.setProperty("DatabaseException", "databaseError");//数据库异常处理
         mappings.setProperty("UnauthorizedException","403");
         r.setExceptionMappings(mappings);  // None by default
-//        r.setDefaultErrorView("error");    // No default
-//        r.setExceptionAttribute("ex");     // Default is "exception"
-        //r.setWarnLogCategory("example.MvcLogger");     // No default
         return r;
     }
 

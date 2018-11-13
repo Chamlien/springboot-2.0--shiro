@@ -13,14 +13,15 @@
     用户<shiro:principal property="username"/>已身份验证通过
 </shiro:authenticated>
 <a href="/logout">退出</a>
-
+<div>
 <shiro:hasRole name="admin">
-    用户[<shiro:principal/>]拥有角色admin<br/>
+    用户[<shiro:principal property="username"/>]拥有角色admin<br/>
 </shiro:hasRole>
-<shiro:hasPermission name="user:create">
-    用户[<shiro:principal/>]拥有权限userCreate<br/>
-</shiro:hasPermission>
 
+<shiro:hasPermission name="user:create">
+    用户[<shiro:principal property="username"/>]拥有权限userCreate<br/>
+</shiro:hasPermission>
+</div>
 
 </body>
 </html>

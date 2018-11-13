@@ -29,8 +29,6 @@ public class HomeController {
     @RequestMapping("/sys/login")
     @ResponseBody
     public static R login(@RequestParam String username, String password,boolean rememberMe) throws IOException {
-
-
         try {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
